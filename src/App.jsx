@@ -1,7 +1,13 @@
+import { useState } from "react";
+import Sidebar from "./components/Sidebar";
 function App() {
+  const [selectedProject, setSelectedProject] = useState(undefined);
+  function handleSelect(project) {
+    setSelectedProject(project);
+  }
   return (
     <>
-      <h1 className="my-8 text-center text-5xl font-bold">Hello World</h1>
+      <Sidebar onSelect={handleSelect} prjectSelected={selectedProject} />
     </>
   );
 }

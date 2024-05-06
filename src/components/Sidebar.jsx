@@ -9,7 +9,7 @@ export function Project({ children, onSelect }) {
   }
 
   return (
-    <div className="flex flex-row justify-between">
+    <div className="inline-flex flex-row justify-between">
       <p></p>
       <button
         className="mx-3 flex flex-row justify-between my-1 w-full"
@@ -25,7 +25,7 @@ export function Project({ children, onSelect }) {
 }
 export default function Sidebar({ onSelect, projectSelected }) {
   return (
-    <div className="flex flex-col bg-gray-300 sm:w-1/12 min-w-fit w-full h-screen">
+    <div className="flex flex-col bg-gray-300 sm:w-1/6 min-w-fit w-full h-screen">
       <h1 className="text-center">
         <strong>Projekty</strong>
       </h1>

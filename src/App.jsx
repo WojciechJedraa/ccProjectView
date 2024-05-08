@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Sidebar from "./components/Sidebar";
-import Project from "./components/Project";
+import Projects from "./components/Projects";
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(undefined);
@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="flex flex-row">
       <Sidebar onSelect={handleSelect} prjectSelected={selectedProject} />
-      <Project />
+      <Projects />
     </div>
   );
 }

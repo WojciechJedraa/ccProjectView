@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import Projects from "./components/Projects";
+import TodoDetails from "./components/TodoDetails";
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(undefined);

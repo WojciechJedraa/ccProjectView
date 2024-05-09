@@ -1,6 +1,3 @@
-import protonMail from "../assets/protonMail.png";
-import messenger from "../assets/messenger.png";
-
 export function Tool({ tool, link, img }) {
   return (
     <a href={link} target="_BLANK">
@@ -9,13 +6,14 @@ export function Tool({ tool, link, img }) {
   );
 }
 
-export default function ToolLinks({ tools, links }) {
+export default function ToolLinks({ tools }) {
   let link = "mailto:wojciechjedra@proton.me";
   let link2 = "m.me";
   return (
     <div className="flex flex-row">
-      <Tool tool="protonmail" img={protonMail} link={link} />
-      <Tool toole="messenger" img={messenger} link={link2} />
+      {tools.map(({ tool, link, img }) => (
+        <Tool tool={tool} link={link} img={img} />
+      ))}
     </div>
   );
 }

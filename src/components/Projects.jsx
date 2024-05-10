@@ -5,6 +5,11 @@ import messenger from "../assets/messenger.png";
 
 export function Todo({ children, timeLeft }) {
   const [todoDone, setTodoDone] = useState();
+  const [isSelected, setIsSelected] = useState(false);
+
+  function handleSelect() {
+    setIsSelected((selected) => (selected ? false : true));
+  }
   if (!todoDone) {
     return (
       <div className="flex flex-row">
@@ -17,6 +22,12 @@ export function Todo({ children, timeLeft }) {
         <p className="mx-1">{children}</p>
         <span className="w flex-grow"> </span>
         <span className="mx-2">{timeLeft}</span>
+        <button onClick={handleSelect}>
+          {console.log(isSelected)}
+          <span className={isSelected ? "transition" : "rotate-90 transition"}>
+            &gt;
+          </span>
+        </button>
       </div>
     );
   }
@@ -24,8 +35,8 @@ export function Todo({ children, timeLeft }) {
 
 export function Person({ children }) {
   let tools = [
-    { tool: "protonmail", link: "wjedra89@gmail.com", img: protonMail },
-    { tool: "messenger", link: "m.me", img: messenger },
+    { tool: "protonmail", link: "mailto:wjedra89@gmail.com", img: protonMail },
+    { tool: "messenger", link: "https://m.me", img: messenger },
   ];
   return (
     <div className="flex flex-col text-lg">

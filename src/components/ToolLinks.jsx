@@ -7,8 +7,6 @@ export function Tool({ tool, link, img }) {
 }
 
 export default function ToolLinks({ tools }) {
-  let link = "mailto:wojciechjedra@proton.me";
-  let link2 = "m.me";
   return (
     <div className="flex flex-row">
       {tools.map(({ tool, link, img }) => (

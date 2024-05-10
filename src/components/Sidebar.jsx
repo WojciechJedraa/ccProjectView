@@ -4,8 +4,8 @@ export function Project({ children, onSelect }) {
   const [isSelected, setIsSelected] = useState(false);
 
   function handleSelect() {
-    onSelect(children);
     setIsSelected((selected) => (selected ? false : true));
+    console.log(isSelected);
   }
 
   return (

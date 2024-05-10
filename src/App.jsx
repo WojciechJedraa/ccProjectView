@@ -12,6 +12,7 @@ function App() {
     <div className="flex flex-row">
       <Sidebar onSelect={handleSelect} prjectSelected={selectedProject} />
       <Projects />
+      <TodoDetails todoShown="ok" />
     </div>
   );
 }

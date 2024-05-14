@@ -5,7 +5,6 @@ export function Project({ children, onSelect }) {
 
   function handleSelect() {
     setIsSelected((selected) => (selected ? false : true));
-    console.log(isSelected);
   }
 
   return (
@@ -23,7 +22,7 @@ export function Project({ children, onSelect }) {
     </div>
   );
 }
-export default function Sidebar({ onSelect, projectSelected }) {
+export default function Sidebar({ onSelect, projectSelected, projects }) {
   return (
     <div className="flex flex-col bg-gray-300 sm:w-1/6 min-w-fit w-full h-screen">
       <h1 className="text-center">

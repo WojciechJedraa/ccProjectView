@@ -1,0 +1,42 @@
+{
+  "projects": [
+    { 
+      "id": 1,
+      "name": "project1",
+      "description": "Placeholder",
+      "todos": [
+        {
+          "id": 1,
+          "name": "todo1/project1",
+          "description": "Placeholder",
+          "deadline": "2024-05-29"
+        },
+        {
+          "id": 2,
+          "name": "todo2/Project1",
+          "description": "Placeholder",
+          "deadline": "2024-05-30"
+        }
+      ] 
+    },
+    {
+      "id": 2,
+      "name": "project2",
+      "description": "Placeholder",
+      "todos": [
+        {
+          "id": 1,
+          "name": "todo1/project2",
+          "description": "Placeholder",
+          "deadline": "2024-05-29"
+        },
+        {
+          "id": 2,
+          "name": "todo2/Project2",
+          "description": "Placeholder",
+          "deadline": "2024-05-30"
+        }
+      ]
+    }
+    ]
+}

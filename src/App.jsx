@@ -8,7 +8,7 @@ const startingProjects = {
     {
       id: 1,
       name: "project1",
-      description: "Placeholder",
+      description: "This is a template project",
       todos: [
         {
           id: 1,
@@ -19,7 +19,7 @@ const startingProjects = {
         {
           id: 2,
           name: "todo2/Project1",
-          description: "Placeholder",
+          description: "Placeholder2",
           deadline: "2024-05-30",
         },
       ],
@@ -27,18 +27,18 @@ const startingProjects = {
     {
       id: 2,
       name: "project2",
-      description: "Placeholder",
+      description: "Project 2 template",
       todos: [
         {
           id: 1,
           name: "todo1/project2",
-          description: "Placeholder",
+          description: "Placeholder3",
           deadline: "2024-05-29",
         },
         {
           id: 2,
           name: "todo2/Project2",
-          description: "Placeholder",
+          description: "Placeholder4",
           deadline: "2024-05-30",
         },
       ],
@@ -49,8 +49,9 @@ const startingProjects = {
 function App() {
   const [projects, setProjects] = useState(startingProjects.projects);
   const [selectedProject, setSelectedProject] = useState(undefined);
-  function handleSelect(project) {
-    setSelectedProject(project);
+  function handleSelect(e) {
+    setSelectedProject(e.target.name);
+    console.log(e.target);
   }
   return (
     <div className="flex flex-row">
@@ -59,7 +60,7 @@ function App() {
         prjectSelected={selectedProject}
         projects={projects}
       />
-      <Projects projects={projects} />
+      <Projects />
       <TodoDetails todoShown="ok" />
     </div>
   );

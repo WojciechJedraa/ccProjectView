@@ -10,7 +10,7 @@ export default function ToolLinks({ tools }) {
   return (
     <div className="flex flex-row">
       {tools.map(({ tool, link, img }) => (
-        <Tool tool={tool} link={link} img={img} />
+        <Tool tool={tool} link={link} img={img} key={tool} />
       ))}
     </div>
   );

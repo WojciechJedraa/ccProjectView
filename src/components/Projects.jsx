@@ -1,35 +1,36 @@
-import { useState } from "react";
 import ToolLinks from "./ToolLinks";
 import protonMail from "../assets/protonMail.png";
 import messenger from "../assets/messenger.png";
 
 export function Todo({ children, timeLeft }) {
-  const [todoDone, setTodoDone] = useState();
+  /*   const [todoDone, setTodoDone] = useState();
   const [isSelected, setIsSelected] = useState(false);
 
   function handleSelect() {
     setIsSelected((selected) => (selected ? false : true));
-  }
-  if (!todoDone) {
-    return (
-      <div className="flex flex-row">
-        <input
-          type="checkbox"
-          name="done"
-          onClick={() => setTodoDone(true)}
-          className=""
-        />
-        <p className="mx-1">{children}</p>
-        <span className="w flex-grow"> </span>
-        <span className="mx-2">{timeLeft}</span>
-        <button onClick={handleSelect}>
-          <span className={isSelected ? "transition" : "rotate-90 transition"}>
-            &gt;
-          </span>
-        </button>
-      </div>
-    );
-  }
+  } */
+  /* if (!todoDone) { */
+  return (
+    <div className="flex flex-row">
+      <input
+        type="checkbox"
+        name="done"
+        /* onClick={() => setTodoDone(true) }*/
+        className=""
+      />
+      <p className="mx-1">{children}</p>
+      <span className="w flex-grow"> </span>
+      <span className="mx-2">{timeLeft}</span>
+      <button /* onClick={handleSelect} */>
+        <span
+          className="rotate-90" /* className={isSelected ? "transition" : "rotate-90 transition"} */
+        >
+          &gt;
+        </span>
+      </button>
+    </div>
+  );
+  //}
 }
 
 export function Person({ children }) {

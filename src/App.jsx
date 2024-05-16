@@ -57,7 +57,7 @@ function App() {
     <div className="flex flex-row h-screen">
       <Sidebar
         onSelect={handleSelect}
-        prjectSelected={selectedProject}
+        projectSelected={selectedProject}
         projects={projects}
       />
       <Projects />

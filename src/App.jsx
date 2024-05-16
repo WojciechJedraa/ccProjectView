@@ -50,11 +50,11 @@ function App() {
   const [projects, setProjects] = useState(startingProjects.projects);
   const [selectedProject, setSelectedProject] = useState(undefined);
   function handleSelect(e) {
+    console.log(e.target.name);
     setSelectedProject(e.target.name);
-    console.log(e.target);
   }
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row h-screen">
       <Sidebar
         onSelect={handleSelect}
         prjectSelected={selectedProject}

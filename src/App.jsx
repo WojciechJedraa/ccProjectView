@@ -47,21 +47,23 @@ const startingProjects = {
 };
 
 function App() {
-  const [projects, setProjects] = useState(startingProjects.projects);
-  const [selectedProject, setSelectedProject] = useState(undefined);
-  function handleSelect(e) {
-    console.log(e.target.name);
-    setSelectedProject(e.target.name);
+  const [projects, setProjects] = useState({
+    all: startingProjects,
+    selected: undefined,
+  });
+
+  function handleSelectProject(name, selected) {
+    if (selected) {
+      setProjects({ all: startingProjects, selected: undefined });
+    } else {
+      setProjects({ all: startingProjects, selected: name });
+    }
   }
   return (
     <div className="flex flex-row h-screen">
-      <Sidebar
-        onSelect={handleSelect}
-        projectSelected={selectedProject}
-        projects={projects}
-      />
+      <Sidebar projects={projects} onSelect={handleSelectProject} />
       <Projects />
-      <TodoDetails todoShown="ok" />
+      <TodoDetails todoShown="placeholder" />
     </div>
   );
 }

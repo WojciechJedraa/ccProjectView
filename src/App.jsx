@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Sidebar from "./components/Sidebar";
-import Projects from "./components/Projects";
+import ProjectDetails from "./components/ProjectDetails";
 import TodoDetails from "./components/TodoDetails";
 
 const startingProjects = {
@@ -62,8 +62,8 @@ function App() {
   return (
     <div className="flex flex-row h-screen">
       <Sidebar projects={projects} onSelect={handleSelectProject} />
-      <Projects />
-      <TodoDetails todoShown="placeholder" />
+      {projects.selected && <ProjectDetails />}
+      {projects.selected && <TodoDetails todoShown={projects.selected} />}
     </div>
   );
 }

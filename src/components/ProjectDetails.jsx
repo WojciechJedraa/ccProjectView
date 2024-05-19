@@ -48,9 +48,9 @@ export function Person({ children }) {
   );
 }
 
-export default function Projects() {
+export default function ProjectDetails({ projects }) {
   return (
-    <section className="ml-2 bg-gray-300 w-1/3 rounded-lg my-2 py-2 px-2 border border-gray-400">
+    <section className="ml-2 bg-gray-300 w-1/3 rounded-lg my-2 py-2 px-2 border border-gray-400 animate-slideIn duration-400">
       <h2
         className="text-4xl  my-2 mx-1 rounded-lg  border-gray-500 px-2 py-2"
         key="projectHeader"

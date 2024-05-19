@@ -4,9 +4,21 @@ export default {
   theme: {
     extend: {
       keyframes: {
-        shuffle: {
-          "0%": { left: 0, top: 0 },
-          "100%": {},
+        slideIn: {
+          from: {
+            opacity: "0",
+            transofrm: "translateX(-50px)",
+          },
+          to: {
+            opacity: "1",
+            transofm: "translateX(0)",
+          },
+        },
+      },
+
+      animation: {
+        slideIn: {
+          slidein: "slideIn 3s ease 300ms",
         },
       },
     },

@@ -62,7 +62,7 @@ function App() {
   return (
     <div className="flex flex-row h-screen">
       <Sidebar projects={projects} onSelect={handleSelectProject} />
-      {projects.selected && <ProjectDetails />}
+      {projects.selected && <ProjectDetails projects={projects} />}
       {projects.selected && <TodoDetails todoShown={projects.selected} />}
     </div>
   );

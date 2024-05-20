@@ -45,20 +45,49 @@ const startingProjects = {
     },
   ],
 };
+/* const selectedProjectTemplate = {
+  id: undefined,
+  name: undefined,
+  description: undefined,
+  todos: [
+    {
+      id: undefined,
+      name: undefined,
+      description: undefined,
+      deadline: undefined,
+    },
+    {
+      id: undefined,
+      name: undefined,
+      description: undefined,
+      deadline: undefined,
+    },
+  ],
+}; */
 
 function App() {
   const [projects, setProjects] = useState({
     all: startingProjects,
     selected: undefined,
   });
-
+  console.log(projects.selected);
   function handleSelectProject(name, selected) {
     if (selected) {
       setProjects({ all: startingProjects, selected: undefined });
     } else {
-      setProjects({ all: startingProjects, selected: name });
+      /* let newSelected;
+      for (let i = 0; i < projects.all.length; i++) {
+        if (projects.all.i.name === projects.selected.name) {
+          newSelected.id = projects.all.i.id;
+          newSelected.name = projects.all.i.name;
+          newSelected.description = projects.all.i.description;
+          newSelected.todos = projects.all.i.todos;
+        }
+      } */
+      setProjects({ all: startingProjects, selected: name /* newSelected */ });
     }
   }
+
   return (
     <div className="flex flex-row h-screen">
       <Sidebar projects={projects} onSelect={handleSelectProject} />

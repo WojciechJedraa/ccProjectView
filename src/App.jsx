@@ -45,7 +45,7 @@ const startingProjects = {
     },
   ],
 };
-/* const selectedProjectTemplate = {
+const selectedProjectTemplate = {
   id: undefined,
   name: undefined,
   description: undefined,
@@ -63,36 +63,39 @@ const startingProjects = {
       deadline: undefined,
     },
   ],
-}; */
+};
 
 function App() {
   const [projects, setProjects] = useState({
     all: startingProjects,
-    selected: undefined,
+    selected: selectedProjectTemplate,
   });
-  console.log(projects.selected);
+
   function handleSelectProject(name, selected) {
     if (selected) {
-      setProjects({ all: startingProjects, selected: undefined });
+      setProjects({ all: startingProjects, selected: selectedProjectTemplate });
     } else {
-      /* let newSelected;
-      for (let i = 0; i < projects.all.length; i++) {
-        if (projects.all.i.name === projects.selected.name) {
-          newSelected.id = projects.all.i.id;
-          newSelected.name = projects.all.i.name;
-          newSelected.description = projects.all.i.description;
-          newSelected.todos = projects.all.i.todos;
+      let newSelected = { ...selectedProjectTemplate };
+      for (let i = 0; i < projects.all.projects.length; i++) {
+        if (projects.all.projects[i].name === name) {
+          newSelected.id = projects.all.projects[i].id;
+          newSelected.name = projects.all.projects[i].name;
+          newSelected.description = projects.all.projects[i].description;
+          newSelected.todos = projects.all.projects[i].todos;
         }
-      } */
-      setProjects({ all: startingProjects, selected: name /* newSelected */ });
+      }
+      setProjects({
+        all: startingProjects,
+        selected: newSelected /* newSelected */,
+      });
     }
   }
 
   return (
     <div className="flex flex-row h-screen">
       <Sidebar projects={projects} onSelect={handleSelectProject} />
-      {projects.selected && <ProjectDetails projects={projects} />}
-      {projects.selected && <TodoDetails todoShown={projects.selected} />}
+      {projects.selected.id && <ProjectDetails project={projects} />}
+      {projects.selected.id && <TodoDetails todoShown={projects.selected} />}
     </div>
   );
 }

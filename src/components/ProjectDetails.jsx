@@ -48,14 +48,14 @@ export function Person({ children }) {
   );
 }
 
-export default function ProjectDetails({ projects }) {
+export default function ProjectDetails({ project }) {
   return (
     <section className="ml-2 bg-gray-300 w-1/3 rounded-lg my-2 py-2 px-2 border border-gray-400 duration-400">
       <h2
         className="text-4xl  my-2 mx-1 rounded-lg  border-gray-500 px-2 py-2"
         key="projectHeader"
       >
-        Projekt 1
+        {project.selected.name}
       </h2>
 
       <section className="bg-gray-400 bg-opacity-65 border-opacity-65 rounded-lg border border-solid border-gray-500 mx-1">

@@ -1,10 +1,9 @@
 export function Project({ name, selected, onSelect }) {
   return (
     <div className="inline-flex flex-row justify-between">
-      <p></p>
+      <span></span>
       <button
         className="mx-3 flex flex-row justify-between my-1 w-full"
-        name={name}
         onClick={() => onSelect(name, selected)}
       >
         <span>{name}</span>
@@ -27,7 +26,7 @@ export default function Sidebar({ projects, onSelect }) {
         <Project
           key={object.id}
           name={object.name}
-          selected={object.name === projects.selected}
+          selected={object.name === projects.selected.name}
           onSelect={onSelect}
         />
       ))}

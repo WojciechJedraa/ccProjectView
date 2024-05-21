@@ -69,10 +69,10 @@ export default function ProjectDetails({ project }) {
           className="text-lg  flex flex-col mx-1 rounded-lg  border-gray-500 px-2"
           key="todos"
         >
-          <Todo key="todo1">todo1</Todo>
-          <Todo key="todo2">todo2</Todo>
-          <Todo key="todo3">todo3</Todo>
-          <Todo key="todo4">todo4</Todo>
+          {console.log(project.selected.todos[0])}
+          {project.selected.todos.map((object) => (
+            <Todo key={object.id}>{object.name}</Todo>
+          ))}
         </div>
       </section>
       <div
@@ -80,9 +80,9 @@ export default function ProjectDetails({ project }) {
         key="description"
       >
         <h1 className="text-2xl font-light">Description</h1>
-        <p className="text-md">This is a template project</p>
+        <p className="text-md">{project.selected.description}</p>
       </div>
-      <div
+      {/* <div
         className="my-2 bg-gray-400 mx-1 rounded-lg border border-gray-500 px-2 py-2"
         key="people"
       >
@@ -90,7 +90,7 @@ export default function ProjectDetails({ project }) {
           People involved
         </h2>
         <Person>Osoba1</Person>
-      </div>
+      </div> */}
     </section>
   );
 }

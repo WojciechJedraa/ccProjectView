@@ -69,8 +69,12 @@ function App() {
   );
   console.log(selectedTodo);
 
-  function handleSelectTodo(id) {
-    setSelectedTodo(projects.selected.todos[id]);
+  function handleSelectTodo(id, selected) {
+    if (selected) {
+      setSelectedTodo(...selectedProjectTemplate.todos);
+    } else {
+      setSelectedTodo(projects.selected.todos[id]);
+    }
   }
 
   function handleSelectProject(name, selected) {

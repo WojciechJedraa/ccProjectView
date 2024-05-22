@@ -1,51 +1,37 @@
-import ToolLinks from "./ToolLinks";
+import { useState } from "react";
+import Person from "./Person";
 import protonMail from "../assets/protonMail.png";
 import messenger from "../assets/messenger.png";
 
-export function Todo({ children, timeLeft, onTodoSelect, identifier }) {
-  /*   const [todoDone, setTodoDone] = useState();
-  const [isSelected, setIsSelected] = useState(false);
+export function Todo({
+  children,
+  timeLeft,
+  onTodoSelect,
+  identifier,
+  selected,
+}) {
+  const [todoDone, setTodoDone] = useState(false);
 
-  function handleSelect() {
-    setIsSelected((selected) => (selected ? false : true));
-  } */
-  /* if (!todoDone) { */
-  return (
-    <div className="flex flex-row">
-      <input
-        type="checkbox"
-        name="done"
-        /* onClick={() => setTodoDone(true) }*/
-        className=""
-      />
-      <p className="mx-1">{children}</p>
-      <span className="w flex-grow"> </span>
-      <span className="mx-2">{timeLeft}</span>
-      <button onClick={() => onTodoSelect(identifier)}>
-        <span
-          className="rotate-90" /* className={isSelected ? "transition" : "rotate-90 transition"} */
-        >
-          &gt;
-        </span>
-      </button>
-    </div>
-  );
-  //}
-}
-
-export function Person({ children }) {
-  let tools = [
-    { tool: "protonmail", link: "mailto:wjedra89@gmail.com", img: protonMail },
-    { tool: "messenger", link: "https://m.me", img: messenger },
-  ];
-  return (
-    <div className="flex flex-col text-lg">
-      <span>{children}</span>
-      <div className="flex">
-        <ToolLinks tools={tools} />
+  if (!todoDone) {
+    return (
+      <div className="flex flex-row">
+        <input
+          type="checkbox"
+          name="done"
+          onClick={() => setTodoDone(true)}
+          className=""
+        />
+        <p className="mx-1">{children}</p>
+        <span className="w flex-grow"> </span>
+        <span className="mx-2">{timeLeft}</span>
+        <button onClick={() => onTodoSelect(identifier, selected)}>
+          <span className={selected ? "transition" : "rotate-90 transition"}>
+            &gt;
+          </span>
+        </button>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default function ProjectDetails({ project, onTodoSelect }) {
@@ -75,6 +61,7 @@ export default function ProjectDetails({ project, onTodoSelect }) {
               key={object.id}
               identifier={object.id}
               onTodoSelect={onTodoSelect}
+              selected={object.name === project.selected.name}
             >
               {object.name}
             </Todo>

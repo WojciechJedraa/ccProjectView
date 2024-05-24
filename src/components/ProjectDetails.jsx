@@ -3,15 +3,8 @@ import Person from "./Person";
 import protonMail from "../assets/protonMail.png";
 import messenger from "../assets/messenger.png";
 
-export function Todo({
-  children,
-  timeLeft,
-  onTodoSelect,
-  identifier,
-  selected,
-}) {
+export function Todo({ todo, timeLeft, onTodoSelect, identifier, selected }) {
   const [todoDone, setTodoDone] = useState(false);
-
   if (!todoDone) {
     return (
       <div className="flex flex-row">
@@ -21,7 +14,7 @@ export function Todo({
           onClick={() => setTodoDone(true)}
           className=""
         />
-        <p className="mx-1">{children}</p>
+        <p className="mx-1">{todo}</p>
         <span className="w flex-grow"> </span>
         <span className="mx-2">{timeLeft}</span>
         <button onClick={() => onTodoSelect(identifier, selected)}>
@@ -34,7 +27,7 @@ export function Todo({
   }
 }
 
-export default function ProjectDetails({ project, onTodoSelect }) {
+export default function ProjectDetails({ project }) {
   return (
     <section className="ml-2 bg-gray-300 w-1/3 rounded-lg my-2 py-2 px-2 border border-gray-400 duration-400">
       <h2
@@ -55,26 +48,22 @@ export default function ProjectDetails({ project, onTodoSelect }) {
           className="text-lg  flex flex-col mx-1 rounded-lg  border-gray-500 px-2"
           key="todos"
         >
-          {console.log(project.selected.todos[0])}
           {project.selected.todos.map((object) => (
             <Todo
               key={object.id}
               identifier={object.id}
-              onTodoSelect={onTodoSelect}
-              selected={object.name === project.selected.name}
-            >
-              {object.name}
-            </Todo>
+              /* selected={object.name === project.select} */
+            />
           ))}
         </div>
       </section>
-      <div
+      <section
         className="my-2 bg-gray-400 mx-1 rounded-lg border border-gray-500 px-2 py-2"
         key="description"
       >
         <h1 className="text-2xl font-light">Description</h1>
         <p className="text-md">{project.selected.description}</p>
-      </div>
+      </section>
       {/* <div
         className="my-2 bg-gray-400 mx-1 rounded-lg border border-gray-500 px-2 py-2"
         key="people"

@@ -55,7 +55,7 @@ export default function ProjectDetails({ project, onTodoSelect }) {
           className="text-lg  flex flex-col mx-1 rounded-lg  border-gray-500 px-2"
           key="todos"
         >
-          {console.log(project.selected.todos[0])}
+          {/* {console.log(project.selected.todos)} */}
           {project.selected.todos.map((object) => (
             <Todo
               key={object.id}
@@ -63,7 +63,7 @@ export default function ProjectDetails({ project, onTodoSelect }) {
               onTodoSelect={onTodoSelect}
               selected={object.name === project.selected.name}
             >
-              {object.name}
+              {object.name + " " + object.id}
             </Todo>
           ))}
         </div>

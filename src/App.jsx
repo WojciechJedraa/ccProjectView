@@ -3,7 +3,7 @@ import Sidebar from "./components/Sidebar";
 import ProjectDetails from "./components/ProjectDetails";
 import TodoDetails from "./components/TodoDetails";
 
-const startingProjects = {
+const startingProjectsData = {
   projects: [
     {
       id: 1,
@@ -59,27 +59,34 @@ const selectedProjectTemplate = {
   ],
 };
 
+const startingProjects = {
+  all: startingProjectsData,
+  selected: selectedProjectTemplate,
+  selectedTodo: selectedProjectTemplate.todos[0],
+};
+
 function App() {
-  const [projects, setProjects] = useState({
-    all: startingProjects,
-    selected: selectedProjectTemplate,
-  });
-  const [selectedTodo, setSelectedTodo] = useState(
-    ...selectedProjectTemplate.todos
-  );
-  console.log(selectedTodo);
+  const [projects, setProjects] = useState(startingProjects);
 
   function handleSelectTodo(id, selected) {
     if (selected) {
-      setSelectedTodo(...selectedProjectTemplate.todos);
+      let newProjects = { ...projects };
+      newProjects.selectedTodo = { ...selectedProjectTemplate.todos[0] };
+      setProjects(newProjects);
     } else {
-      setSelectedTodo(projects.selected.todos[id]);
+      let newProjects = { ...projects };
+      newProjects.selectedTodo = { ...projects.selected.todos[id] };
+      setProjects(newProjects);
     }
   }
 
   function handleSelectProject(name, selected) {
     if (selected) {
-      setProjects({ all: startingProjects, selected: selectedProjectTemplate });
+      setProjects({
+        all: startingProjectsData,
+        selected: selectedProjectTemplate,
+        selectedTodo: selectedProjectTemplate.todos[0],
+      });
     } else {
       let newSelected = { ...selectedProjectTemplate };
       for (let i = 0; i < projects.all.projects.length; i++) {
@@ -91,19 +98,22 @@ function App() {
         }
       }
       setProjects({
-        all: startingProjects,
+        all: startingProjectsData,
         selected: newSelected /* newSelected */,
+        selectedTodo: selectedProjectTemplate.todos[0],
       });
     }
   }
-
+  console.log(projects.selectedTodo);
   return (
     <div className="flex flex-row h-screen">
       <Sidebar projects={projects} onSelect={handleSelectProject} />
       {projects.selected.id && (
         <ProjectDetails project={projects} onTodoSelect={handleSelectTodo} />
       )}
-      {selectedTodo.id && <TodoDetails todoShown={selectedTodo.id} />}
+      {projects.selectedTodo.id && (
+        <TodoDetails todoShown={projects.selectedTodo.id} />
+      )}
     </div>
   );
 }

@@ -75,7 +75,7 @@ function App() {
       setProjects(newProjects);
     } else {
       let newProjects = { ...projects };
-      newProjects.selectedTodo = { ...projects.selected.todos[id] };
+      newProjects.selectedTodo = { ...projects.selected.todos[id - 1] };
       setProjects(newProjects);
     }
   }
@@ -99,12 +99,12 @@ function App() {
       }
       setProjects({
         all: startingProjectsData,
-        selected: newSelected /* newSelected */,
+        selected: newSelected,
         selectedTodo: selectedProjectTemplate.todos[0],
       });
     }
   }
-  console.log(projects.selectedTodo);
+  /* console.log(projects.selectedTodo); */
   return (
     <div className="flex flex-row h-screen">
       <Sidebar projects={projects} onSelect={handleSelectProject} />
@@ -112,7 +112,7 @@ function App() {
         <ProjectDetails project={projects} onTodoSelect={handleSelectTodo} />
       )}
       {projects.selectedTodo.id && (
-        <TodoDetails todoShown={projects.selectedTodo.id} />
+        <TodoDetails todoShown={projects.selectedTodo} />
       )}
     </div>
   );

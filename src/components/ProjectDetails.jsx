@@ -25,9 +25,7 @@ export function Todo({
         <span className="w flex-grow"> </span>
         <span className="mx-2">{timeLeft}</span>
         <button onClick={() => onTodoSelect(identifier, selected)}>
-          <span className={selected ? "transition" : "rotate-90 transition"}>
-            &gt;
-          </span>
+          <span className={selected ? "text-green" : "text-red"}>&gt;</span>
         </button>
       </div>
     );
@@ -55,13 +53,13 @@ export default function ProjectDetails({ project, onTodoSelect }) {
           className="text-lg  flex flex-col mx-1 rounded-lg  border-gray-500 px-2"
           key="todos"
         >
-          {/* {console.log(project.selected.todos)} */}
+          {console.log(project.selectedTodo)}
           {project.selected.todos.map((object) => (
             <Todo
               key={object.id}
               identifier={object.id}
               onTodoSelect={onTodoSelect}
-              selected={object.name === project.selected.name}
+              selected={object.name === project.selectedTodo.name}
             >
               {object.name + " " + object.id}
             </Todo>

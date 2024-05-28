@@ -66,19 +66,11 @@ const startingProjects = {
 };
 
 function App() {
-  const [projects, setProjects] = useState(startingProjects);
-
-  function handleSelectTodo(id, selected) {
-    if (selected) {
-      let newProjects = { ...projects };
-      newProjects.selectedTodo = { ...selectedProjectTemplate.todos[0] };
-      setProjects(newProjects);
-    } else {
-      let newProjects = { ...projects };
-      newProjects.selectedTodo = { ...projects.selected.todos[id - 1] };
-      setProjects(newProjects);
-    }
-  }
+  const [projects, setProjects] = useState({
+    all: { ...startingProjects },
+    selected: { ...selectedProjectTemplate },
+    selectedTodo: { ...selectedProjectTemplate.todos },
+  });
 
   function handleSelectProject(name, selected) {
     if (selected) {
@@ -104,16 +96,18 @@ function App() {
       });
     }
   }
-  /* console.log(projects.selectedTodo); */
+
   return (
     <div className="flex flex-row h-screen">
       <Sidebar projects={projects} onSelect={handleSelectProject} />
       {projects.selected.id && (
-        <ProjectDetails project={projects} onTodoSelect={handleSelectTodo} />
+        <ProjectDetails
+          project={projects}
+          /* todoShown={selectedTodo} */
+          /* onTodoSelect={handleSelectTodo} */
+        />
       )}
-      {projects.selectedTodo.id && (
-        <TodoDetails todoShown={projects.selectedTodo} />
-      )}
+      {selectedTodo.id && <TodoDetails todoShown={selectedTodo.id} />}
     </div>
   );
 }

@@ -3,7 +3,7 @@ import Sidebar from "./components/Sidebar";
 import ProjectDetails from "./components/ProjectDetails";
 import TodoDetails from "./components/TodoDetails";
 
-const startingProjects = {
+const startingProjectsData = {
   projects: [
     {
       id: 1,
@@ -59,27 +59,26 @@ const selectedProjectTemplate = {
   ],
 };
 
+const startingProjects = {
+  all: startingProjectsData,
+  selected: selectedProjectTemplate,
+  selectedTodo: selectedProjectTemplate.todos[0],
+};
+
 function App() {
   const [projects, setProjects] = useState({
-    all: startingProjects,
-    selected: selectedProjectTemplate,
+    all: { ...startingProjects },
+    selected: { ...selectedProjectTemplate },
+    selectedTodo: { ...selectedProjectTemplate.todos },
   });
-  const [selectedTodo, setSelectedTodo] = useState(
-    ...selectedProjectTemplate.todos
-  );
-  console.log(selectedTodo);
-
-  function handleSelectTodo(id, selected) {
-    if (selected) {
-      setSelectedTodo(...selectedProjectTemplate.todos);
-    } else {
-      setSelectedTodo(projects.selected.todos[id]);
-    }
-  }
 
   function handleSelectProject(name, selected) {
     if (selected) {
-      setProjects({ all: startingProjects, selected: selectedProjectTemplate });
+      setProjects({
+        all: startingProjectsData,
+        selected: selectedProjectTemplate,
+        selectedTodo: selectedProjectTemplate.todos[0],
+      });
     } else {
       let newSelected = { ...selectedProjectTemplate };
       for (let i = 0; i < projects.all.projects.length; i++) {
@@ -91,8 +90,9 @@ function App() {
         }
       }
       setProjects({
-        all: startingProjects,
-        selected: newSelected /* newSelected */,
+        all: startingProjectsData,
+        selected: newSelected,
+        selectedTodo: selectedProjectTemplate.todos[0],
       });
     }
   }
@@ -101,7 +101,11 @@ function App() {
     <div className="flex flex-row h-screen">
       <Sidebar projects={projects} onSelect={handleSelectProject} />
       {projects.selected.id && (
-        <ProjectDetails project={projects} onTodoSelect={handleSelectTodo} />
+        <ProjectDetails
+          project={projects}
+          /* todoShown={selectedTodo} */
+          /* onTodoSelect={handleSelectTodo} */
+        />
       )}
       {selectedTodo.id && <TodoDetails todoShown={selectedTodo.id} />}
     </div>

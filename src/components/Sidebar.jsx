@@ -18,7 +18,7 @@ export function Project({ name, selected, onSelect }) {
 export default function Sidebar({ projects, onSelect }) {
   const allProjects = projects.all.projects;
   return (
-    <div className="flex flex-col bg-gray-300 w-1/12 min-w-fit  h-screen flex-shrink-0">
+    <section className="flex flex-col bg-gray-300 w-1/12 min-w-fit  h-screen flex-shrink-0">
       <h1 className="text-center">
         <strong>Projekty</strong>
       </h1>
@@ -30,7 +30,9 @@ export default function Sidebar({ projects, onSelect }) {
           onSelect={onSelect}
         />
       ))}
-      <button className="border border-solid rounded-lg">+</button>
-    </div>
+      <button className="border border-solid rounded-lg border-orange-black">
+        +
+      </button>
+    </section>
   );
 }

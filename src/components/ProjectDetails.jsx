@@ -10,26 +10,22 @@ export function Todo({
   identifier,
   selected,
 }) {
-  const [todoDone, setTodoDone] = useState(false);
-
-  if (!todoDone) {
-    return (
-      <div className="flex flex-row">
-        <input
-          type="checkbox"
-          name="done"
-          onClick={() => setTodoDone(true)}
-          className=""
-        />
-        <p className="mx-1">{children}</p>
-        <span className="w flex-grow"> </span>
-        <span className="mx-2">{timeLeft}</span>
-        <button onClick={() => onTodoSelect(identifier, selected)}>
-          <span className={selected ? "text-green" : "text-red"}>&gt;</span>
-        </button>
-      </div>
-    );
-  }
+  return (
+    <div className="flex flex-row">
+      <input
+        type="checkbox"
+        name="done"
+        onClick={() => setTodoDone(true)}
+        className=""
+      />
+      <p className="mx-1">{children}</p>
+      <span className="w flex-grow"> </span>
+      <span className="mx-2">{timeLeft}</span>
+      <button onClick={() => onTodoSelect(identifier, selected)}>
+        <span className={selected ? "text-green" : "text-red"}>&gt;</span>
+      </button>
+    </div>
+  );
 }
 
 export default function ProjectDetails({ project, onTodoSelect }) {

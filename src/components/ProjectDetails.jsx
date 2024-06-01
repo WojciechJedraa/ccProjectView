@@ -10,6 +10,7 @@ export function Todo({
   identifier,
   selected,
 }) {
+  console.log(children + " " + selected);
   return (
     <div className="flex flex-row">
       <input
@@ -22,7 +23,15 @@ export function Todo({
       <span className="w flex-grow"> </span>
       <span className="mx-2">{timeLeft}</span>
       <button onClick={() => onTodoSelect(identifier, selected)}>
-        <span className={selected ? "text-green" : "text-red"}>&gt;</span>
+        <span
+          className={
+            selected
+              ? "transform transition inline-block"
+              : "transform transition inline-block rotate-90"
+          }
+        >
+          &gt;
+        </span>
       </button>
     </div>
   );

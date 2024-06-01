@@ -3,7 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      keyframes: {
+      /*       keyframes: {
         slideIn: {
           from: {
             opacity: "0",
@@ -20,7 +20,7 @@ export default {
         slideIn: {
           slidein: "slideIn 3s ease 300ms",
         },
-      },
+      }, */
     },
   },
   plugins: [],

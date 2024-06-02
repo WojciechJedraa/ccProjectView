@@ -104,7 +104,6 @@ function App() {
       });
     }
   }
-  /* console.log(projects.selectedTodo); */
   return (
     <div className="flex flex-row h-screen">
       <Sidebar projects={projects} onSelect={handleSelectProject} />
@@ -112,7 +111,7 @@ function App() {
         <ProjectDetails project={projects} onTodoSelect={handleSelectTodo} />
       )}
       {projects.selectedTodo.id && (
-        <TodoDetails todoShown={projects.selectedTodo} />
+        <TodoDetails todoSelected={projects.selectedTodo} />
       )}
     </div>
   );

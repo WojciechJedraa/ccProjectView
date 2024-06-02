@@ -10,7 +10,6 @@ export function Todo({
   identifier,
   selected,
 }) {
-  console.log(children + " " + selected);
   return (
     <div className="flex flex-row">
       <input
@@ -58,7 +57,6 @@ export default function ProjectDetails({ project, onTodoSelect }) {
           className="text-lg  flex flex-col mx-1 rounded-lg  border-gray-500 px-2"
           key="todos"
         >
-          {console.log(project.selectedTodo)}
           {project.selected.todos.map((object) => (
             <Todo
               key={object.id}

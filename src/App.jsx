@@ -2,6 +2,7 @@ import { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import ProjectDetails from "./components/ProjectDetails";
 import TodoDetails from "./components/TodoDetails";
+import AddProjectModal from "./components/AddProjectModal";
 
 const startingProjectsData = {
   projects: [
@@ -106,6 +107,7 @@ function App() {
   }
   return (
     <div className="flex flex-row h-screen">
+      <AddProjectModal />
       <Sidebar projects={projects} onSelect={handleSelectProject} />
       {projects.selected.id && (
         <ProjectDetails project={projects} onTodoSelect={handleSelectTodo} />

@@ -33,7 +33,7 @@ export default function TodoDetails({ todoSelected }) {
               "-" +
               deadline.getUTCFullYear()}
           </span>
-          <span className="inline-block text-md font-light ">
+          <span className="inline-block text-md font-light">
             {timeLeft + " hours"}
           </span>
         </div>

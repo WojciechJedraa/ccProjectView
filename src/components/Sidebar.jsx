@@ -15,7 +15,7 @@ export function Project({ name, selected, onSelect }) {
   );
 }
 
-export default function Sidebar({ projects, onSelect }) {
+export default function Sidebar({ projects, onSelect, handleModal }) {
   const allProjects = projects.all.projects;
   return (
     <section className="flex flex-col bg-gray-300 w-1/12 min-w-fit  h-screen flex-shrink-0">
@@ -30,7 +30,10 @@ export default function Sidebar({ projects, onSelect }) {
           onSelect={onSelect}
         />
       ))}
-      <button className="border border-solid rounded-lg border-orange-black">
+      <button
+        className="border border-solid rounded-lg border-orange-black"
+        onClick={handleModal}
+      >
         +
       </button>
     </section>

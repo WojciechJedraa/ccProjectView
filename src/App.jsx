@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Sidebar from "./components/Sidebar";
 import ProjectDetails from "./components/ProjectDetails";
 import TodoDetails from "./components/TodoDetails";
@@ -64,10 +64,22 @@ const startingProjects = {
   all: startingProjectsData,
   selected: selectedProjectTemplate,
   selectedTodo: selectedProjectTemplate.todos[0],
+  adding: false,
 };
 
 function App() {
   const [projects, setProjects] = useState(startingProjects);
+  console.log(projects);
+
+  function handleModal() {
+    if (projects.adding) {
+      setProjects(startingProjects);
+    } else {
+      let newProjects = { ...projects };
+      newProjects.adding = true;
+      setProjects(newProjects);
+    }
+  }
 
   function handleSelectTodo(id, selected) {
     if (selected) {
@@ -87,6 +99,7 @@ function App() {
         all: startingProjectsData,
         selected: selectedProjectTemplate,
         selectedTodo: selectedProjectTemplate.todos[0],
+        adding: false,
       });
     } else {
       let newSelected = { ...selectedProjectTemplate };
@@ -102,13 +115,18 @@ function App() {
         all: startingProjectsData,
         selected: newSelected,
         selectedTodo: selectedProjectTemplate.todos[0],
+        adding: false,
       });
     }
   }
   return (
     <div className="flex flex-row h-screen">
-      <AddProjectModal />
-      <Sidebar projects={projects} onSelect={handleSelectProject} />
+      {projects.adding && <AddProjectModal projects={projects} />}
+      <Sidebar
+        projects={projects}
+        onSelect={handleSelectProject}
+        handleModal={handleModal}
+      />
       {projects.selected.id && (
         <ProjectDetails project={projects} onTodoSelect={handleSelectTodo} />
       )}

@@ -69,16 +69,19 @@ const startingProjects = {
 
 function App() {
   const [projects, setProjects] = useState(startingProjects);
+  const dialog = useRef();
   console.log(projects);
 
   function handleModal() {
-    if (projects.adding) {
+    console.log(dialog)
+    dialog.current.open()
+    /* if (projects.adding) {
       setProjects(startingProjects);
     } else {
       let newProjects = { ...projects };
       newProjects.adding = true;
       setProjects(newProjects);
-    }
+    } */
   }
 
   function handleSelectTodo(id, selected) {
@@ -121,7 +124,7 @@ function App() {
   }
   return (
     <div className="flex flex-row h-screen">
-      {projects.adding && <AddProjectModal projects={projects} />}
+      <AddProjectModal projects={projects} ref={dialog}/>
       <Sidebar
         projects={projects}
         onSelect={handleSelectProject}

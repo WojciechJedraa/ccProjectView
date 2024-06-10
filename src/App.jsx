@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar";
 import ProjectDetails from "./components/ProjectDetails";
 import TodoDetails from "./components/TodoDetails";
 import AddProjectModal from "./components/AddProjectModal";
+import AddProjectView from "./components/AddProjectView";
 
 const startingProjectsData = {
   projects: [
@@ -70,18 +71,16 @@ const startingProjects = {
 function App() {
   const [projects, setProjects] = useState(startingProjects);
   const dialog = useRef();
-  console.log(projects);
 
   function handleModal() {
-    console.log(dialog)
-    dialog.current.open()
-    /* if (projects.adding) {
+/*     dialog.current.open() */
+    if (projects.adding) {
       setProjects(startingProjects);
     } else {
-      let newProjects = { ...projects };
+      let newProjects = { ...startingProjects };
       newProjects.adding = true;
       setProjects(newProjects);
-    } */
+    }
   }
 
   function handleSelectTodo(id, selected) {
@@ -122,14 +121,16 @@ function App() {
       });
     }
   }
+  console.log("app.jsx")
   return (
     <div className="flex flex-row h-screen">
-      <AddProjectModal projects={projects} ref={dialog}/>
+      {/* <AddProjectModal projects={projects} ref={dialog}/> */}
       <Sidebar
         projects={projects}
         onSelect={handleSelectProject}
         handleModal={handleModal}
       />
+      {projects.adding && <AddProjectView project={projects} onTodoSelect={handleSelectTodo}/>}
       {projects.selected.id && (
         <ProjectDetails project={projects} onTodoSelect={handleSelectTodo} />
       )}

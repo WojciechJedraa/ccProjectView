@@ -31,18 +31,32 @@ export function Todo({
   );
 }
 
-export default function ProjectDetails({ project, onTodoSelect }) {
-  console.log("project details")
+export default function AddProjectView({ project, onTodoSelect }) {
   return (
     <section className="ml-2 bg-gray-300 w-1/3 rounded-lg my-2 py-2 px-2 border border-gray-400 duration-400">
       <h2
         className="text-4xl  my-2 mx-1 rounded-lg  border-gray-500 px-2 py-2"
         key="projectHeader"
       >
-        {project.selected.name}
+        Dodaj Projekt
       </h2>
 
-      <section className="bg-gray-400 bg-opacity-65 border-opacity-65 rounded-lg border border-solid border-gray-500 mx-1">
+      <section className="bg-gray-400 bg-opacity-65 border-opacity-65 rounded-lg border border-solid border-gray-500 mx-1 my-4">
+        <h3
+          className="text-2xl font-light text-gray-600 mx-1 px-2 py-1"
+          key="todoHeader"
+        >
+          Nazwa
+        </h3>
+        <div
+          className="text-lg  flex flex-col mx-1 rounded-lg  border-gray-500 px-2"
+          key="todos"
+        >
+          <input type="text" name="name" />
+        </div>
+      </section>
+
+      <section className="bg-gray-400 bg-opacity-65 border-opacity-65 rounded-lg border border-solid border-gray-500 mx-1 my-4">
         <h3
           className="text-2xl font-light text-gray-600 mx-1 px-2 py-1"
           key="todoHeader"
@@ -66,7 +80,7 @@ export default function ProjectDetails({ project, onTodoSelect }) {
         </div>
       </section>
       <div
-        className="my-2 bg-gray-400 mx-1 rounded-lg border border-gray-500 px-2 py-2"
+        className="bg-gray-400 mx-1 rounded-lg border border-gray-500 px-2 py-2"
         key="description"
       >
         <h1 className="text-2xl font-light">Description</h1>

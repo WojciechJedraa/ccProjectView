@@ -34,7 +34,7 @@ export function Todo({
 }
 
 export default function ProjectDetails({ project, onTodoSelect }) {
-  console.log("project details")
+  console.log("project details");
   return (
     <section className="ml-2 bg-gray-300 w-1/3 rounded-lg my-2 py-2 px-2 border border-gray-400 duration-400">
       <h2
@@ -45,15 +45,15 @@ export default function ProjectDetails({ project, onTodoSelect }) {
       </h2>
       <ViewSection title={"Todo list"}>
         {project.selected.todos.map((object) => (
-            <Todo
-              key={object.id}
-              identifier={object.id}
-              onTodoSelect={onTodoSelect}
-              selected={object.name === project.selectedTodo.name}
-            >
-              {object.name + " " + object.id}
-            </Todo>
-          ))}
+          <Todo
+            key={object.id}
+            identifier={object.id}
+            onTodoSelect={onTodoSelect}
+            selected={object.name === project.selectedTodo.name}
+          >
+            {object.name + " " + object.id}
+          </Todo>
+        ))}
       </ViewSection>
       <ViewSection title={"Description"}>
         {project.selected.description}

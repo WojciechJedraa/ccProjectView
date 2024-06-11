@@ -17,7 +17,7 @@ export default function TodoDetails({ todoSelected }) {
       >
         {todoSelected.name}
       </h2>
-      
+
       <section className="bg-gray-400 bg-opacity-65 border-opacity-65 rounded-lg border border-solid border-gray-500 mx-1">
         <h3
           className="text-2xl font-light text-gray-600 mx-1 px-2 py-1"
@@ -41,9 +41,7 @@ export default function TodoDetails({ todoSelected }) {
           </span>
         </div>
       </section>
-      <ViewSection title="Description">
-        {todoSelected.description}
-      </ViewSection>
+      <ViewSection title="Description">{todoSelected.description}</ViewSection>
     </section>
   );
 }

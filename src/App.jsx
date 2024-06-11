@@ -73,7 +73,7 @@ function App() {
   const dialog = useRef();
 
   function handleModal() {
-/*     dialog.current.open() */
+    /*     dialog.current.open() */
     if (projects.adding) {
       setProjects(startingProjects);
     } else {
@@ -121,7 +121,7 @@ function App() {
       });
     }
   }
-  console.log("app.jsx")
+  console.log("app.jsx");
   return (
     <div className="flex flex-row h-screen">
       {/* <AddProjectModal projects={projects} ref={dialog}/> */}
@@ -130,7 +130,9 @@ function App() {
         onSelect={handleSelectProject}
         handleModal={handleModal}
       />
-      {projects.adding && <AddProjectView project={projects} onTodoSelect={handleSelectTodo}/>}
+      {projects.adding && (
+        <AddProjectView project={projects} onTodoSelect={handleSelectTodo} />
+      )}
       {projects.selected.id && (
         <ProjectDetails project={projects} onTodoSelect={handleSelectTodo} />
       )}

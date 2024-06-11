@@ -1,3 +1,5 @@
+import ViewSection from "./ViewSection";
+
 export default function TodoDetails({ todoSelected }) {
   const now = new Date();
   console.log(now);
@@ -15,6 +17,7 @@ export default function TodoDetails({ todoSelected }) {
       >
         {todoSelected.name}
       </h2>
+      
       <section className="bg-gray-400 bg-opacity-65 border-opacity-65 rounded-lg border border-solid border-gray-500 mx-1">
         <h3
           className="text-2xl font-light text-gray-600 mx-1 px-2 py-1"
@@ -38,23 +41,9 @@ export default function TodoDetails({ todoSelected }) {
           </span>
         </div>
       </section>
-      <div
-        className="my-2 bg-gray-400 mx-1 rounded-lg border border-gray-500 px-2 py-2"
-        key="description"
-      >
-        <h1 className="text-2xl font-light">Description</h1>
-        <p className="text-md">{todoSelected.description}</p>
-      </div>
-
-      {/* <div
-        className="my-2 bg-gray-400 mx-1 rounded-lg border border-gray-500 px-2 py-2"
-        key="people"
-      >
-        <h2 className="text-xl font-light" key="peopleHeader">
-          People involved
-        </h2>
-        <Person>Osoba1</Person>
-      </div> */}
+      <ViewSection title="Description">
+        {todoSelected.description}
+      </ViewSection>
     </section>
   );
 }

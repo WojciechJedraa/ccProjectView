@@ -1,3 +1,5 @@
+import ViewSection from "./ViewSection";
+
 export function Todo({
   children,
   timeLeft,
@@ -33,41 +35,18 @@ export function Todo({
 
 export default function AddProjectView({ project, onTodoSelect }) {
   return (
-    <section className="ml-2 bg-gray-300 w-1/3 rounded-lg my-2 py-2 px-2 border border-gray-400 duration-400">
+   <section className="ml-2 bg-gray-300 w-1/3 rounded-lg my-2 py-2 px-2 border border-gray-400 duration-400">
       <h2
         className="text-4xl  my-2 mx-1 rounded-lg  border-gray-500 px-2 py-2"
         key="projectHeader"
       >
         Dodaj Projekt
       </h2>
-
-      <section className="bg-gray-400 bg-opacity-65 border-opacity-65 rounded-lg border border-solid border-gray-500 mx-1 my-4">
-        <h3
-          className="text-2xl font-light text-gray-600 mx-1 px-2 py-1"
-          key="todoHeader"
-        >
-          Nazwa
-        </h3>
-        <div
-          className="text-lg  flex flex-col mx-1 rounded-lg  border-gray-500 px-2"
-          key="todos"
-        >
-          <input type="text" name="name" />
-        </div>
-      </section>
-
-      <section className="bg-gray-400 bg-opacity-65 border-opacity-65 rounded-lg border border-solid border-gray-500 mx-1 my-4">
-        <h3
-          className="text-2xl font-light text-gray-600 mx-1 px-2 py-1"
-          key="todoHeader"
-        >
-          Todo list
-        </h3>
-        <div
-          className="text-lg  flex flex-col mx-1 rounded-lg  border-gray-500 px-2"
-          key="todos"
-        >
-          {project.selected.todos.map((object) => (
+      <ViewSection title={"nazwa"}>
+        <input type="text" name="name" />
+      </ViewSection>
+      <ViewSection title={"Todo list"}>
+        {project.selected.todos.map((object) => (
             <Todo
               key={object.id}
               identifier={object.id}
@@ -77,15 +56,10 @@ export default function AddProjectView({ project, onTodoSelect }) {
               {object.name + " " + object.id}
             </Todo>
           ))}
-        </div>
-      </section>
-      <div
-        className="bg-gray-400 mx-1 rounded-lg border border-gray-500 px-2 py-2"
-        key="description"
-      >
-        <h1 className="text-2xl font-light">Description</h1>
-        <p className="text-md">{project.selected.description}</p>
-      </div>
+      </ViewSection>
+      <ViewSection title={"Description"}>
+        {project.selected.description}
+      </ViewSection>
       {/* <div
         className="my-2 bg-gray-400 mx-1 rounded-lg border border-gray-500 px-2 py-2"
         key="people"

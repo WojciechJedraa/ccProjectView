@@ -18,17 +18,22 @@ const AddProjectModal = forwardRef(function AddProjectModal({ ...props }, ref) {
       className="bg-gray-300 rounded-lg backdrop:bg-black-50 backdrop:backdrop-blur-sm open:animate-fade-in flex flex-col px-4 py-2"
       ref={dialog}
     >
+    <dialog
+      className="bg-gray-300 rounded-lg backdrop:bg-black-50 backdrop:backdrop-blur-sm open:animate-fade-in flex flex-col px-4 py-2"
+      ref={dialog}
+    >
       <form method="dialog" className="place-self-end">
         <button>x</button>
       </form>
       <span>Dodaj projekt</span>
-      <form action="">
-        <label></label>
-        <input type="text" name="" id="" />
-      </form>
+      <button name="dialog" onClick={close()}>
+        x
+      </button>
     </dialog>,
     document.querySelector("#modal-root")
   );
 });
+});
 
 export default AddProjectModal;
+

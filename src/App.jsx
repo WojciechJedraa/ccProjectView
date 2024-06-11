@@ -124,7 +124,7 @@ function App() {
   console.log("app.jsx");
   return (
     <div className="flex flex-row h-screen">
-      {/* <AddProjectModal projects={projects} ref={dialog}/> */}
+      <AddProjectModal projects={projects} ref={dialog} />
       <Sidebar
         projects={projects}
         onSelect={handleSelectProject}

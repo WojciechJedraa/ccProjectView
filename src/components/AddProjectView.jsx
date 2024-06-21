@@ -42,8 +42,12 @@ export default function AddProjectView({ project, onTodoSelect }) {
       >
         Dodaj Projekt
       </h2>
-      <ViewSection title={"nazwa"}>
-        <input type="text" name="name" />
+      <ViewSection title={"Name"}>
+        <input
+          type="text"
+          name="name"
+          className="rounded-lg opacity-50 my-1 mb-1"
+        />
       </ViewSection>
       <ViewSection title={"Todo list"}>
         {project.selected.todos.map((object) => (
@@ -58,6 +62,11 @@ export default function AddProjectView({ project, onTodoSelect }) {
         ))}
       </ViewSection>
       <ViewSection title={"Description"}>
+        <textarea
+          name=""
+          id=""
+          className="rounded-lg opacity-50 my-1 mb-1"
+        ></textarea>
         {project.selected.description}
       </ViewSection>
       {/* <div
@@ -69,6 +78,11 @@ export default function AddProjectView({ project, onTodoSelect }) {
         </h2>
         <Person>Osoba1</Person>
       </div> */}
+      <ViewSection classes={"bg-transparent border-none"}>
+        <button className="border-black border border-solid mx-2 my-2 rounded-lg border-opacity-50 bg-black opacity-50 text-white hover:bg-white hover:text-black hover:border-white ">
+          Dodaj
+        </button>
+      </ViewSection>
     </section>
   );
 }

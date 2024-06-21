@@ -3,6 +3,7 @@ import { forwardRef, useImperativeHandle, useRef } from "react";
 
 const AddProjectModal = forwardRef(function AddProjectModal({ ...props }, ref) {
   const dialog = useRef();
+
   useImperativeHandle(ref, () => {
     return {
       open() {
@@ -13,11 +14,8 @@ const AddProjectModal = forwardRef(function AddProjectModal({ ...props }, ref) {
       },
     };
   });
+
   return createPortal(
-    <dialog
-      className="bg-gray-300 rounded-lg backdrop:bg-black-50 backdrop:backdrop-blur-sm open:animate-fade-in flex flex-col px-4 py-2"
-      ref={dialog}
-    >
     <dialog
       className="bg-gray-300 rounded-lg backdrop:bg-black-50 backdrop:backdrop-blur-sm open:animate-fade-in flex flex-col px-4 py-2"
       ref={dialog}
@@ -33,7 +31,5 @@ const AddProjectModal = forwardRef(function AddProjectModal({ ...props }, ref) {
     document.querySelector("#modal-root")
   );
 });
-});
 
 export default AddProjectModal;
-

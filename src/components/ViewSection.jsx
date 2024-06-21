@@ -6,12 +6,14 @@ export default function ViewSection({ title, children, classes }) {
         classes
       }
     >
-      <h3
-        className="text-2xl font-light text-gray-600 mx-1 px-2 py-1"
-        key="todoHeader"
-      >
-        {title}
-      </h3>
+      {title && (
+        <h3
+          className="text-2xl font-light text-gray-600 mx-1 px-2 py-1"
+          key="todoHeader"
+        >
+          {title}
+        </h3>
+      )}
       <div
         className="text-lg  flex flex-col mx-1 rounded-lg  border-gray-500 px-2"
         key="todos"
